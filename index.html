@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A private, browser-based study progress tracker for upcoming exams."
+    />
+    <title>Study Progress Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Study Progress Tracker home">
+        <span class="brand-mark" aria-hidden="true">ST</span>
+        <span>Study Tracker</span>
+      </a>
+      <div class="topbar-actions">
+        <span class="storage-note">Saved in this browser</span>
+        <button class="button button-secondary" id="edit-exam-button" type="button">
+          Exam settings
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="summary-band" aria-labelledby="exam-name">
+        <div class="summary-inner">
+          <div class="exam-summary">
+            <p class="eyebrow">Active exam</p>
+            <h1 id="exam-name">Set your exam</h1>
+            <p id="exam-date">No exam date configured</p>
+          </div>
+
+          <dl class="summary-metrics">
+            <div>
+              <dt>Days remaining</dt>
+              <dd id="days-remaining">-</dd>
+            </div>
+            <div>
+              <dt>Target score</dt>
+              <dd id="target-score">-</dd>
+            </div>
+            <div>
+              <dt>Tasks complete</dt>
+              <dd id="overall-progress">0%</dd>
+            </div>
+          </dl>
+
+          <div
+            class="summary-progress"
+            role="progressbar"
+            aria-label="Overall task completion"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <span id="summary-progress-bar"></span>
+          </div>
+        </div>
+      </section>
+
+      <div class="workspace">
+        <section class="task-panel" aria-labelledby="tasks-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Study plan</p>
+              <h2 id="tasks-heading">Tasks</h2>
+            </div>
+            <button class="button button-primary" id="add-task-button" type="button">
+              <span aria-hidden="true">+</span>
+              Add task
+            </button>
+          </div>
+
+          <div class="task-toolbar" aria-label="Task filters">
+            <label>
+              <span>Status</span>
+              <select id="status-filter">
+                <option value="all">All statuses</option>
+                <option value="not-started">Not started</option>
+                <option value="in-progress">In progress</option>
+                <option value="completed">Completed</option>
+              </select>
+            </label>
+            <label>
+              <span>Subject</span>
+              <select id="subject-filter">
+                <option value="all">All subjects</option>
+              </select>
+            </label>
+            <p id="task-count" aria-live="polite">0 tasks</p>
+          </div>
+
+          <div id="task-list" class="task-list"></div>
+        </section>
+
+        <aside class="score-panel" aria-labelledby="scores-heading">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Practice results</p>
+              <h2 id="scores-heading">Mock scores</h2>
+            </div>
+          </div>
+
+          <dl class="score-metrics">
+            <div>
+              <dt>Latest</dt>
+              <dd id="latest-score">-</dd>
+            </div>
+            <div>
+              <dt>Highest</dt>
+              <dd id="highest-score">-</dd>
+            </div>
+            <div>
+              <dt>Average</dt>
+              <dd id="average-score">-</dd>
+            </div>
+          </dl>
+
+          <form id="score-form" class="score-form">
+            <label>
+              <span>Score</span>
+              <input
+                id="score-value"
+                name="score"
+                type="number"
+                min="0"
+                max="100"
+                step="1"
+                placeholder="0-100"
+                required
+              />
+            </label>
+            <label>
+              <span>Date</span>
+              <input id="score-date" name="date" type="date" required />
+            </label>
+            <button class="button button-primary" type="submit">Add score</button>
+          </form>
+
+          <div id="score-list" class="score-list"></div>
+        </aside>
+      </div>
+
+      <section class="subject-band" aria-labelledby="subjects-heading">
+        <div class="subject-inner">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Coverage</p>
+              <h2 id="subjects-heading">Subject progress</h2>
+            </div>
+          </div>
+          <div id="subject-progress-list" class="subject-progress-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="exam-dialog">
+      <form id="exam-form" method="dialog">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">Exam plan</p>
+            <h2>Exam settings</h2>
+          </div>
+          <button
+            class="icon-button"
+            type="button"
+            data-close-dialog="exam-dialog"
+            title="Close"
+            aria-label="Close exam settings"
+          >
+            ×
+          </button>
+        </div>
+        <label>
+          <span>Exam name</span>
+          <input id="exam-name-input" name="name" type="text" maxlength="80" required />
+        </label>
+        <div class="form-grid">
+          <label>
+            <span>Exam date</span>
+            <input id="exam-date-input" name="date" type="date" required />
+          </label>
+          <label>
+            <span>Target score</span>
+            <input
+              id="exam-target-input"
+              name="targetScore"
+              type="number"
+              min="0"
+              max="100"
+              required
+            />
+          </label>
+        </div>
+        <div class="dialog-actions">
+          <button
+            class="button button-secondary"
+            type="button"
+            data-close-dialog="exam-dialog"
+          >
+            Cancel
+          </button>
+          <button class="button button-primary" type="submit">Save exam</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="task-dialog">
+      <form id="task-form" method="dialog">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">Study plan</p>
+            <h2 id="task-dialog-title">Add task</h2>
+          </div>
+          <button
+            class="icon-button"
+            type="button"
+            data-close-dialog="task-dialog"
+            title="Close"
+            aria-label="Close task form"
+          >
+            ×
+          </button>
+        </div>
+        <input id="task-id-input" name="id" type="hidden" />
+        <label>
+          <span>Task</span>
+          <input id="task-title-input" name="title" type="text" maxlength="100" required />
+        </label>
+        <label>
+          <span>Subject</span>
+          <input
+            id="task-subject-input"
+            name="subject"
+            type="text"
+            maxlength="60"
+            required
+          />
+        </label>
+        <div class="form-grid">
+          <label>
+            <span>Due date</span>
+            <input id="task-date-input" name="dueDate" type="date" required />
+          </label>
+          <label>
+            <span>Priority</span>
+            <select id="task-priority-input" name="priority" required>
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </label>
+        </div>
+        <label>
+          <span>Status</span>
+          <select id="task-status-input" name="status" required>
+            <option value="not-started">Not started</option>
+            <option value="in-progress">In progress</option>
+            <option value="completed">Completed</option>
+          </select>
+        </label>
+        <div class="dialog-actions">
+          <button
+            class="button button-secondary"
+            type="button"
+            data-close-dialog="task-dialog"
+          >
+            Cancel
+          </button>
+          <button class="button button-primary" type="submit">Save task</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
