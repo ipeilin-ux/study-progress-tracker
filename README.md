@@ -45,7 +45,7 @@ account system, analytics, or backend.
 ES modules require a local web server. From the repository root:
 
 ```bash
-python3 -m http.server 8000 --directory study-progress-tracker
+python3 -m http.server 8000
 ```
 
 Open <http://localhost:8000>.
@@ -55,7 +55,6 @@ Open <http://localhost:8000>.
 The tests use Node.js's built-in test runner and require no installed packages:
 
 ```bash
-cd study-progress-tracker
 node --test
 ```
 
@@ -102,7 +101,6 @@ Pull requests are welcome if they keep the project dependency-free and aligned
 with the existing privacy-first scope. Before opening a PR, run:
 
 ```bash
-cd study-progress-tracker
 node --test
 ```
 
