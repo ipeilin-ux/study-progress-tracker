@@ -15,6 +15,13 @@ coverage, mock exam scores, and the countdown to an upcoming exam.
 The project uses plain HTML, CSS, and JavaScript. It has no runtime dependencies,
 account system, analytics, or backend.
 
+## Preview
+
+![Study Progress Tracker preview](assets/preview.png)
+
+The screenshot uses synthetic sample data only. The app keeps data in the
+current browser and is GitHub Pages-ready from the repository root.
+
 ## Why This Repository Stands Out
 
 - Self-contained: no packages to install and no external APIs to configure
@@ -80,6 +87,8 @@ This repository is intentionally limited to practice data and local storage.
 
 ```text
 study-progress-tracker/
+├── assets/
+│   └── preview.png
 ├── app.js
 ├── index.html
 ├── lib/
