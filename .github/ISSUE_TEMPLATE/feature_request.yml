@@ -1,0 +1,39 @@
+name: Feature request
+description: Suggest a small improvement that fits the current scope
+title: "[Feature]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for a small, focused improvement.
+        Avoid requests that require accounts, sync, analytics, or external services.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What limitation are you trying to solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: What should the app do?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why this fits
+      description: Why is this change small and aligned with the current scope?
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This request does not depend on a backend, external API, or login system.
+          required: true
+        - label: This request does not require licensed course material or personal data.
+          required: true

@@ -1,0 +1,51 @@
+name: Bug report
+description: Report a problem in the study tracker
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for reproducible bugs in the public browser app.
+        Do not include personal data, credentials, or confidential study material.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What is broken?
+      placeholder: A short description of the problem
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: List the smallest set of steps that reproduces the issue.
+      placeholder: |
+        1. Open...
+        2. Enter...
+        3. Observe...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+      description: What should happen instead?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+      description: What happened instead?
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This report does not include personal data or confidential study material.
+          required: true
+        - label: This report stays within the dependency-free, client-side scope of the project.
+          required: true

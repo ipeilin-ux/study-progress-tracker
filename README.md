@@ -35,6 +35,7 @@ current browser and is GitHub Pages-ready from the repository root.
 - Public, clean source tree with no bundled course material or exam banks
 - Automated CI runs on GitHub Actions for every push and pull request
 - Public `v1.0.0` release baseline with changelog support
+- GitHub issue and pull request templates guide maintenance and review
 - MIT licensed for straightforward reuse and contribution
 
 Release notes are tracked in [CHANGELOG.md](CHANGELOG.md).
@@ -97,6 +98,12 @@ study-progress-tracker/
 │   └── preview.png
 ├── app.js
 ├── index.html
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   │   ├── bug_report.yml
+│   │   ├── config.yml
+│   │   └── feature_request.yml
+│   └── PULL_REQUEST_TEMPLATE.md
 ├── docs/
 │   └── codex-open-source-application-blurb.md
 ├── lib/

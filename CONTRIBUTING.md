@@ -13,6 +13,7 @@ node --test
 
 If you touched browser behavior, also verify the app in a browser on desktop
 and mobile widths.
+Use the GitHub issue and pull request templates when they are available.
 
 ## What Fits This Project
 
