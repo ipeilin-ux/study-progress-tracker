@@ -1,6 +1,7 @@
 # Study Progress Tracker
 
 [![CI](https://github.com/ipeilin-ux/study-progress-tracker/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ipeilin-ux/study-progress-tracker/actions/workflows/ci.yml)
+[![Pages](https://github.com/ipeilin-ux/study-progress-tracker/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/ipeilin-ux/study-progress-tracker/actions/workflows/pages.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Vanilla JS](https://img.shields.io/badge/stack-HTML%2FCSS%2FJavaScript-1f7a8c)](#)
 
@@ -21,6 +22,8 @@ account system, analytics, or backend.
 
 The screenshot uses synthetic sample data only. The app keeps data in the
 current browser and is GitHub Pages-ready from the repository root.
+
+Expected demo URL: <https://ipeilin-ux.github.io/study-progress-tracker/>
 
 ## Why This Repository Stands Out
 
@@ -71,14 +74,11 @@ node --test
 
 ## Deploy With GitHub Pages
 
-1. Create a GitHub repository using the contents of this folder as its root.
-2. Push the repository to GitHub.
-3. Open the repository's **Settings**.
-4. Select **Pages**.
-5. Choose **Deploy from a branch**.
-6. Select your branch and the `/(root)` folder, then save.
+This repository includes a GitHub Actions workflow at
+`.github/workflows/pages.yml` that publishes the site from the repository root.
 
-The expected Pages URL is `https://ipeilin-ux.github.io/study-progress-tracker/`.
+If GitHub Pages is not already active for the repository, open **Settings**,
+select **Pages**, and set the source to **GitHub Actions**.
 
 ## Data And Privacy
 
@@ -103,6 +103,9 @@ study-progress-tracker/
 │   │   ├── bug_report.yml
 │   │   ├── config.yml
 │   │   └── feature_request.yml
+│   ├── workflows/
+│   │   ├── ci.yml
+│   │   └── pages.yml
 │   └── PULL_REQUEST_TEMPLATE.md
 ├── docs/
 │   └── codex-open-source-application-blurb.md
