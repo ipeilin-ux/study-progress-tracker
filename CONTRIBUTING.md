@@ -8,7 +8,6 @@ changes aligned with that scope.
 Run the test suite from the repository root:
 
 ```bash
-cd study-progress-tracker
 node --test
 ```
 
