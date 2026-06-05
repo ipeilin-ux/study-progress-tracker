@@ -34,7 +34,10 @@ current browser and is GitHub Pages-ready from the repository root.
 
 - Public, clean source tree with no bundled course material or exam banks
 - Automated CI runs on GitHub Actions for every push and pull request
+- Public `v1.0.0` release baseline with changelog support
 - MIT licensed for straightforward reuse and contribution
+
+Release notes are tracked in [CHANGELOG.md](CHANGELOG.md).
 
 ## Features
 
@@ -74,6 +77,8 @@ node --test
 5. Choose **Deploy from a branch**.
 6. Select your branch and the `/(root)` folder, then save.
 
+The expected Pages URL is `https://ipeilin-ux.github.io/study-progress-tracker/`.
+
 ## Data And Privacy
 
 All exam, task, and score data is stored in the browser's `localStorage`.
@@ -87,10 +92,13 @@ This repository is intentionally limited to practice data and local storage.
 
 ```text
 study-progress-tracker/
+├── CHANGELOG.md
 ├── assets/
 │   └── preview.png
 ├── app.js
 ├── index.html
+├── docs/
+│   └── codex-open-source-application-blurb.md
 ├── lib/
 │   └── tracker.js
 ├── styles.css

@@ -2,6 +2,8 @@
   "name": "study-progress-tracker",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://ipeilin-ux.github.io/study-progress-tracker/",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "test": "node --test"
